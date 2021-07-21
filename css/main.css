@@ -14,6 +14,12 @@
     outline: none;
 }
 
+/* Скрытие данных до конца рендера страницы */
+
+[v-cloak] {
+    display: none;
+}
+
 /* Тело сайта */
 
 body {
@@ -169,6 +175,47 @@ header {
 .header_linkCurrent {
     height: 47px;
     border-bottom: solid 3px var(--main-color);
+}
+
+/* Анимация для кнопки прокрутки */
+
+.slide-fade-enter-active {
+    transition: all 0.2s ease-out;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateX(20px);
+    opacity: 0;
+}
+
+/* Кнопка прокрутки */
+
+a#move_up {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 90px;
+    height: 21px;
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--main-color);
+    background: #ffedf1;
+    padding-top: 5px;
+    opacity: 0.9;
+    filter: alpha(opacity = 90);
+    z-index: 2
+}
+
+a#move_up:hover {
+    color: #fff;
+    background: var(--main-color);
 }
 
 /* Тело страницы (контент) */

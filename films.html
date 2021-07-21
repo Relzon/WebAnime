@@ -8,15 +8,14 @@
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/popupStyles.css">
-    <link rel="stylesheet" href="css/upScrollButton.css">
 </head>
 
 <body>
 
-    <header>
-        <div class="header_logo">
+    <header @scroll="onScroll" v-cloak>
+        <div :class="logoStyleClass">
             <a href="index.html">
-                <img src="images/logo.png" />
+                <img :src="logoLink" />
             </a>
         </div>
 
@@ -29,6 +28,10 @@
                 <li><a href="manga.html">Манга</a></li>
             </ul>
         </div>
+
+        <transition name="slide-fade">
+            <a v-if="upScrollButtonExistence" @click="upScroll" :id="upScrollButtonId" href="#">{{ upScrollButtonText }}</a>
+        </transition>
     </header>
 
     <div class="page_padding">
@@ -202,51 +205,40 @@
     </div>
 
     <footer>
-        <div class="fl_l">&copy; 2016-2021 <a href="https://relzon.com">Mr. Relzon</a></div>
-        <div class="fl_r">Сделано руками и... головой :)</div>
+        <div class="fl_l">&copy; 2016-{{ new Date().getFullYear() }} <a :href="link">{{ author }}</a></div>
+        <div class="fl_r">{{ slogan }}</div>
     </footer>
 
     <a href="#x" class="overlay" id="win1"></a>
 
     <div class="popup">
-        <iframe width="853" height="480" src="http://video.sibnet.ru/shell.php?videoid=2550498&share=0"></iframe>
+        <iframe width="853" height="480" src="https://aniqit.com/video/9922/ff12830da2a4ccc9f91e6dbf4ba8e90f/720p"></iframe>
         <a class="close" title="Закрыть" href="films.html" onclick="films.html(); return false;"></a>
     </div>
 
     <a href="#x" class="overlay" id="win2"></a>
 
     <div class="popup">
-        <iframe width="853" height="480" src="http://vk.com/video_ext.php?oid=-69328224&id=456239080&hash=7b5ac2d418fc6f02&hd=2" frameborder="0" allowfullscreen></iframe>
+        <iframe width="853" height="480" src="https://aniqit.com/video/9911/2837855fc9e0cc3f27207331f2e96153/720p" frameborder="0" allowfullscreen></iframe>
         <a class="close" title="Закрыть" href="films.html" onclick="films.html(); return false;"></a>
     </div>
 
     <a href="#x" class="overlay" id="win3"></a>
 
     <div class="popup">
-        <iframe width="853" height="480" src="http://vk.com/video_ext.php?oid=-72965975&id=171901481&hash=0333dc91b5166ba4&hd=2" frameborder="0" allowfullscreen></iframe>
+        <iframe width="853" height="480" src="https://aniqit.com/video/74744/58c2305c4e9c49a7690975b62395d64e/720p" frameborder="0" allowfullscreen></iframe>
         <a class="close" title="Закрыть" href="films.html" onclick="films.html(); return false;"></a>
     </div>
 
     <a href="#x" class="overlay" id="win4"></a>
 
     <div class="popup">
-        <iframe width="853" height="480" src="http://video.sibnet.ru/shell.php?videoid=2470673&share=0"></iframe>
+        <iframe width="853" height="480" src="https://aniqit.com/video/9985/4059f54ab25aa818397710cb289f98de/720p"></iframe>
         <a class="close" title="Закрыть" href="films.html" onclick="films.html(); return true;"></a>
     </div>
 
-    <script src="js/jquery-2.2.3.min.js"></script>
-    <script src="js/jquery.upScrollButton.js"></script>
-    <script>
-        jQuery(document).ready(function () {
-            jQuery("body").upScrollButton(
-                {
-                    upScrollButtonText: "Наверх",
-                    heightForButtonAppear: 20,
-                    scrollTopTime: 1500
-                }
-            );
-        });
-    </script>
+    <script src="js/vue-3.1.5.min.js"></script>
+    <script src="js/vue.webAnimeApp.js"></script>
 </body>
 
 </html>
